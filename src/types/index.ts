@@ -7,7 +7,19 @@ export interface PathogenCharacteristics {
     incubationPeriod: string;   // Time between exposure and symptoms
     commonSymptoms: string[];   // Array of typical symptoms
 }
-
+export interface InvestigationPhase {
+    phase: 'initial' | 'testing' | 'confirmation';
+    day: string;
+    date: string;
+    description: string;
+    keyFindings: string[];
+    criticalQuestions: {
+        question: string;
+        options: string[];
+        correctAnswer: string;
+        explanation: string;
+    }[];
+}
 // Defines how we track cases over time
 export interface CaseData {
     day: string;        // The day of observation

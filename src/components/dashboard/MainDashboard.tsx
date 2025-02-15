@@ -1,25 +1,24 @@
+// src/components/dashboard/MainDashboard.tsx
 import React, { useState } from 'react';
 import { PathogenDisplay } from '../pathogen/PathogenDisplay';
 import { DataVisualization } from '../visualization/DataVisualization';
 import { PathogenType } from '../../types';
 import { OutbreakProgression } from '../visualization/OutbreakProgression';
 import { TestingData } from '../visualization/TestingData';
+import { InvestigationFlow } from '../investigation/InvestigationFlow';
+
 export function MainDashboard() {
-  // We still maintain the ability to view different pathogen references
   const [selectedPathogen, setSelectedPathogen] = useState<PathogenType>('staphylococcus');
-  
-  // Adding an investigation phase tracker could help tell our story
   const [investigationPhase, setInvestigationPhase] = useState<'initial' | 'testing' | 'confirmation'>('initial');
 
   return (
     <div className="min-h-screen bg-gray-100 p-4">
-      <header className="max-w-7xl mx-auto mb-8">
+      <header className="max-w-[95%] mx-auto mb-4">
         <div className="flex justify-between items-center">
           <h1 className="text-3xl font-bold text-gray-900">
             Camp Outbreak Investigation
           </h1>
           
-          {/* We're keeping the pathogen selector as a reference tool */}
           <div className="flex gap-4">
             <span className="text-sm text-gray-600 self-center">Reference Pathogen:</span>
             {(['staphylococcus', 'streptococcus', 'shigella'] as PathogenType[]).map((pathogen) => (
@@ -38,7 +37,6 @@ export function MainDashboard() {
           </div>
         </div>
 
-        {/* Adding a timeline indicator for the investigation */}
         <div className="mt-4 bg-white rounded-lg p-4 shadow">
           <div className="flex justify-between items-center">
             <div className="text-sm text-gray-600">
@@ -63,48 +61,50 @@ export function MainDashboard() {
         </div>
       </header>
 
-      <main className="max-w-7xl mx-auto">
-  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-    {/* Left column stays exactly the same */}
-    <div className="space-y-8">
-      <PathogenDisplay pathogenType={selectedPathogen} />
-    </div>
-    
-    {/* This is the new right column content */}
-    <div className="space-y-8">
-      {/* Phase-based content will show different things based on which phase button is clicked */}
-      {investigationPhase === 'initial' && (
-        <OutbreakProgression />
-      )}
-      {investigationPhase === 'testing' && (
-        <TestingData pathogenType={selectedPathogen} />
-      )}
-      {investigationPhase === 'confirmation' && (
-        <>
-          <OutbreakProgression />
-          <TestingData pathogenType={selectedPathogen} />
-        </>
-      )}
+      <main className="max-w-[95%] mx-auto">
+        <div className="grid grid-cols-4 gap-4">
+          {/* Column 1: Pathogen Reference */}
+          <div className="bg-white rounded-lg shadow p-4 h-[calc(100vh-200px)] overflow-y-auto">
+            <h2 className="text-lg font-semibold mb-3">Pathogen Reference</h2>
+            <PathogenDisplay pathogenType={selectedPathogen} />
+          </div>
 
-      {/* This adds the explanation text below the visualizations */}
-      <div className="bg-white rounded-lg shadow p-4">
-        <h3 className="font-semibold mb-2">
-          {investigationPhase === 'initial' && 'Initial Assessment Phase'}
-          {investigationPhase === 'testing' && 'Laboratory Testing Phase'}
-          {investigationPhase === 'confirmation' && 'Confirmation Phase'}
-        </h3>
-        <p className="text-gray-600">
-          {investigationPhase === 'initial' && 
-            'Analyzing initial symptom patterns and distribution among camp population.'}
-          {investigationPhase === 'testing' && 
-            'Conducting targeted testing based on symptom patterns to identify causative agent.'}
-          {investigationPhase === 'confirmation' && 
-            'Reviewing all evidence to confirm Streptococcal infection as the outbreak cause.'}
-        </p>
-      </div>
-    </div>
-  </div>
-</main>
+          {/* Column 2: Symptom Progression */}
+          <div className="bg-white rounded-lg shadow p-4 h-[calc(100vh-200px)] overflow-y-auto">
+            <h2 className="text-lg font-semibold mb-3">Symptom Progression</h2>
+            <OutbreakProgression />
+          </div>
+
+          {/* Column 3: Testing Data */}
+          <div className="bg-white rounded-lg shadow p-4 h-[calc(100vh-200px)] overflow-y-auto">
+            <h2 className="text-lg font-semibold mb-3">Testing Results</h2>
+            <TestingData pathogenType={selectedPathogen} />
+          </div>
+
+          {/* Column 4: Investigation Flow/Questions */}
+          <div className="bg-white rounded-lg shadow p-4 h-[calc(100vh-200px)] overflow-y-auto">
+            <h2 className="text-lg font-semibold mb-3">Investigation Progress</h2>
+            <InvestigationFlow currentPhase={investigationPhase} />
+            
+            {/* Phase Context Information */}
+            <div className="mt-4 bg-gray-50 rounded p-3">
+              <h3 className="font-semibold text-sm mb-2">
+                {investigationPhase === 'initial' && 'Initial Assessment Phase'}
+                {investigationPhase === 'testing' && 'Laboratory Testing Phase'}
+                {investigationPhase === 'confirmation' && 'Confirmation Phase'}
+              </h3>
+              <p className="text-sm text-gray-600">
+                {investigationPhase === 'initial' && 
+                  'Analyzing initial symptom patterns and distribution among camp population.'}
+                {investigationPhase === 'testing' && 
+                  'Conducting targeted testing based on symptom patterns to identify causative agent.'}
+                {investigationPhase === 'confirmation' && 
+                  'Reviewing all evidence to confirm Streptococcal infection as the outbreak cause.'}
+              </p>
+            </div>
+          </div>
+        </div>
+      </main>
     </div>
   );
 }
