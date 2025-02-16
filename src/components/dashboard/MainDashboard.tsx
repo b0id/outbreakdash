@@ -13,12 +13,12 @@ export function MainDashboard() {
 
   return (
     <div className="min-h-screen bg-gray-100 p-4">
-      <header className="mx-auto mb-4"> {/* Removed max-w-[95%] */}
+      <header className="max-w-[95%] mx-auto mb-4">
         <div className="flex justify-between items-center">
           <h1 className="text-3xl font-bold text-gray-900">
             Camp Outbreak Investigation
           </h1>
-
+          
           <div className="flex gap-4">
             <span className="text-sm text-gray-600 self-center">Reference Pathogen:</span>
             {(['staphylococcus', 'streptococcus', 'shigella'] as PathogenType[]).map((pathogen) => (
@@ -61,32 +61,34 @@ export function MainDashboard() {
         </div>
       </header>
 
-      <main className="mx-auto"> {/* Removed max-w-[95%] */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+      <main className="max-w-[95%] mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 min-h-screen">
           {/* Column 1: Pathogen Reference */}
-          <div className="bg-white rounded-lg shadow p-4 h-[300px] lg:h-[calc(100vh-200px)] overflow-y-auto break-words"> {/* Added break-words */}
+          <div className="bg-white rounded-lg shadow p-4 overflow-y-auto">
             <h2 className="text-lg font-semibold mb-3">Pathogen Reference</h2>
             <PathogenDisplay pathogenType={selectedPathogen} />
           </div>
 
           {/* Column 2: Symptom Progression */}
-          <div className="bg-white rounded-lg shadow p-4 h-[300px] lg:h-[calc(100vh-200px)] overflow-y-auto break-words"> {/* Added break-words */}
+          <div className="bg-white rounded-lg shadow p-4 overflow-y-auto">
             <h2 className="text-lg font-semibold mb-3">Symptom Progression</h2>
             <OutbreakProgression />
           </div>
 
           {/* Column 3: Testing Data */}
-          <div className="bg-white rounded-lg shadow p-4 h-[300px] lg:h-[calc(100vh-200px)] overflow-y-auto break-words"> {/* Added break-words */}
+          <div className="bg-white rounded-lg shadow p-4 overflow-y-auto">
             <h2 className="text-lg font-semibold mb-3">Testing Results</h2>
-            <TestingData />
+            <TestingData pathogenType={selectedPathogen} />
           </div>
 
           {/* Column 4: Investigation Flow/Questions */}
-          <div className="bg-white rounded-lg shadow p-4 h-[300px] lg:h-[calc(100vh-200px)] overflow-y-auto break-words"> {/* Added break-words */}
+          <div className="bg-white rounded-lg shadow p-4 overflow-y-auto">
             <h2 className="text-lg font-semibold mb-3">Investigation Progress</h2>
+            
+            {/* Investigation Flow Component */}
             <InvestigationFlow currentPhase={investigationPhase} />
 
-            {/* Phase Context Information */}
+            {/* Phase-specific Content */}
             <div className="mt-4 bg-gray-50 rounded p-3">
               <h3 className="font-semibold text-sm mb-2">
                 {investigationPhase === 'initial' && 'Initial Assessment Phase'}
@@ -94,14 +96,17 @@ export function MainDashboard() {
                 {investigationPhase === 'confirmation' && 'Confirmation Phase'}
               </h3>
               <p className="text-sm text-gray-600">
-                {investigationPhase === 'initial' &&
+                {investigationPhase === 'initial' && 
                   'Analyzing initial symptom patterns and distribution among camp population.'}
-                {investigationPhase === 'testing' &&
+                {investigationPhase === 'testing' && 
                   'Conducting targeted testing based on symptom patterns to identify causative agent.'}
-                {investigationPhase === 'confirmation' &&
+                {investigationPhase === 'confirmation' && 
                   'Reviewing all evidence to confirm Streptococcal infection as the outbreak cause.'}
               </p>
             </div>
+
+            {/* Phase-specific Visualizations */}
+          
           </div>
         </div>
       </main>
