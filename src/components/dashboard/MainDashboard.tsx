@@ -64,25 +64,25 @@ export function MainDashboard() {
       <main className="mx-auto"> {/* Removed max-w-[95%] */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           {/* Column 1: Pathogen Reference */}
-          <div className="bg-white rounded-lg shadow p-4 h-[calc(100vh-200px)] overflow-y-auto break-words"> {/* Added break-words */}
+          <div className="bg-white rounded-lg shadow p-4 h-[300px] lg:h-[calc(100vh-200px)] overflow-y-auto break-words"> {/* Added break-words */}
             <h2 className="text-lg font-semibold mb-3">Pathogen Reference</h2>
             <PathogenDisplay pathogenType={selectedPathogen} />
           </div>
 
           {/* Column 2: Symptom Progression */}
-          <div className="bg-white rounded-lg shadow p-4 h-[calc(100vh-200px)] overflow-y-auto break-words"> {/* Added break-words */}
+          <div className="bg-white rounded-lg shadow p-4 h-[300px] lg:h-[calc(100vh-200px)] overflow-y-auto break-words"> {/* Added break-words */}
             <h2 className="text-lg font-semibold mb-3">Symptom Progression</h2>
             <OutbreakProgression />
           </div>
 
           {/* Column 3: Testing Data */}
-          <div className="bg-white rounded-lg shadow p-4 h-[calc(100vh-200px)] overflow-y-auto break-words"> {/* Added break-words */}
+          <div className="bg-white rounded-lg shadow p-4 h-[300px] lg:h-[calc(100vh-200px)] overflow-y-auto break-words"> {/* Added break-words */}
             <h2 className="text-lg font-semibold mb-3">Testing Results</h2>
             <TestingData />
           </div>
 
           {/* Column 4: Investigation Flow/Questions */}
-          <div className="bg-white rounded-lg shadow p-4 h-[calc(100vh-200px)] overflow-y-auto break-words"> {/* Added break-words */}
+          <div className="bg-white rounded-lg shadow p-4 h-[300px] lg:h-[calc(100vh-200px)] overflow-y-auto break-words"> {/* Added break-words */}
             <h2 className="text-lg font-semibold mb-3">Investigation Progress</h2>
             <InvestigationFlow currentPhase={investigationPhase} />
 
