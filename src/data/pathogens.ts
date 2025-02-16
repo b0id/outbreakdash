@@ -83,7 +83,7 @@ export const pathogenData: Record<PathogenType, PathogenData> = {
                 { name: 'Azithromycin', efficacy: 88, sideEffects: 'Mild stomach upset' }
             ],
             duration: '10 days',
-            firstLine: 'Penicillin'
+            firstLine: ' Penicillin G benzathine (Bicillin L-A)'
         }
     },
 

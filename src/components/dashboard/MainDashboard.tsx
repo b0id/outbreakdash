@@ -40,7 +40,7 @@ export function MainDashboard() {
         <div className="mt-4 bg-white rounded-lg p-4 shadow">
           <div className="flex justify-between items-center">
             <div className="text-sm text-gray-600">
-              Investigation Timeline: June 15-18, 2025
+              Investigation Timeline: June 15-24, 2025
             </div>
             <div className="flex gap-4">
               {['initial', 'testing', 'confirmation'].map((phase) => (

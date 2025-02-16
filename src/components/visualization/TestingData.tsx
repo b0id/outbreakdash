@@ -1,79 +1,53 @@
 // src/components/visualization/TestingData.tsx
 import React from 'react';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import { PathogenType } from '../../types';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, ReferenceLine } from 'recharts';
+import { testingProgress } from '../../data/outbreakData';
 
-interface TestingDataProps {
-  pathogenType: PathogenType;
-}
-
-export function TestingData({ pathogenType }: TestingDataProps) {
-  // This data structure represents test results coming in over time
-  // Positive rates increase for Strep tests while others remain negative
-  const testingProgressData = [
-    {
-      day: 'Day 1',
-      'Rapid Strep': 8,
-      'Throat Culture': 0,
-      'Staphylococcus Culture': 0,
-      'Shigella Culture': 0,
-      samples: 10
-    },
-    {
-      day: 'Day 2',
-      'Rapid Strep': 15,
-      'Throat Culture': 12,
-      'Staphylococcus Culture': 1,
-      'Shigella Culture': 0,
-      samples: 20
-    },
-    {
-      day: 'Day 3',
-      'Rapid Strep': 22,
-      'Throat Culture': 25,
-      'Staphylococcus Culture': 2,
-      'Shigella Culture': 0,
-      samples: 30
-    },
-    {
-      day: 'Day 4',
-      'Rapid Strep': 28,
-      'Throat Culture': 32,
-      'Staphylococcus Culture': 2,
-      'Shigella Culture': 0,
-      samples: 35
-    }
-  ];
-
+export function TestingData() {
   return (
-    <div className="bg-white rounded-lg shadow p-6">
-      <h2 className="text-xl font-semibold mb-4">Laboratory Testing Results</h2>
-      <div className="space-y-4">
-        <div className="h-72">
-          <ResponsiveContainer width="100%" height="100%">
-            <BarChart data={testingProgressData}>
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="day" />
-              <YAxis />
-              <Tooltip />
-              <Legend />
-              <Bar dataKey="Rapid Strep" fill="#8884d8" />
-              <Bar dataKey="Throat Culture" fill="#82ca9d" />
-              <Bar dataKey="Staphylococcus Culture" fill="#ffc658" />
-              <Bar dataKey="Shigella Culture" fill="#ff8042" />
-            </BarChart>
-          </ResponsiveContainer>
-        </div>
-        
-        <div className="mt-4 p-4 bg-gray-50 rounded-lg">
-          <h3 className="font-medium mb-2">Testing Summary</h3>
-          <p className="text-sm text-gray-600">
-            Total Samples Tested: {testingProgressData[testingProgressData.length - 1].samples}<br />
-            Positive Strep Tests: {testingProgressData[testingProgressData.length - 1]['Throat Culture']}<br />
-            Test Positivity Rate: {((testingProgressData[testingProgressData.length - 1]['Throat Culture'] / 
-              testingProgressData[testingProgressData.length - 1].samples) * 100).toFixed(1)}%
-          </p>
-        </div>
+    <div className="space-y-4">
+      {/* Strep Testing Results */}
+      <div className="h-72">
+        <h3 className="text-lg font-semibold mb-2">Strep Testing Results</h3>
+        <ResponsiveContainer width="100%" height="100%">
+          <LineChart data={testingProgress}>
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="date" />
+            <YAxis />
+            <Tooltip />
+            <Legend />
+            <ReferenceLine x="06/19" stroke="red" label="Intervention Started" />
+            <Line type="monotone" dataKey="rapidStrepPositive" name="Positive Rapid Strep" stroke="#8884d8" />
+            <Line type="monotone" dataKey="throatCulturePositive" name="Positive Culture" stroke="#82ca9d" />
+          </LineChart>
+        </ResponsiveContainer>
+      </div>
+
+      {/* Other Pathogen Testing */}
+      <div className="h-72">
+        <h3 className="text-lg font-semibold mb-2">Differential Testing</h3>
+        <ResponsiveContainer width="100%" height="100%">
+          <LineChart data={testingProgress}>
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="date" />
+            <YAxis />
+            <Tooltip />
+            <Legend />
+            <ReferenceLine x="06/19" stroke="red" label="Intervention Started" />
+            <Line type="monotone" dataKey="staphCulturePositive" name="Positive Staph" stroke="#ffc658" />
+            <Line type="monotone" dataKey="shigellaPositive" name="Positive Shigella" stroke="#ff8042" />
+          </LineChart>
+        </ResponsiveContainer>
+      </div>
+
+      <div className="bg-gray-50 p-4 rounded-lg mt-4">
+        <h4 className="font-medium text-sm mb-2">Testing Summary</h4>
+        <p className="text-sm text-gray-600">
+          Total tests performed: {testingProgress[testingProgress.length - 1].rapidStrep}<br />
+          Positive Strep cases: {testingProgress[testingProgress.length - 1].rapidStrepPositive}<br />
+          Culture confirmation rate: {((testingProgress[testingProgress.length - 1].throatCulturePositive / 
+            testingProgress[testingProgress.length - 1].rapidStrepPositive) * 100).toFixed(1)}%
+        </p>
       </div>
     </div>
   );

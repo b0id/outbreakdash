@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { PathogenDisplay } from './components/pathogen/PathogenDisplay';
 import { MainDashboard } from './components/dashboard/MainDashboard';
 import { PathogenType } from './types';
+import { EnvironmentalDisplay } from './components/visualization/EnvironmentalDisplay';
 
 function App() {
   const [selectedPathogen, setSelectedPathogen] = useState<PathogenType>('staphylococcus');
@@ -10,137 +11,118 @@ function App() {
 
   const originalView = (
     <div className="min-h-screen bg-gray-100 p-4">
-      <header className="max-w-7xl mx-auto mb-8">
+      <header className="max-w-[95%] mx-auto mb-4">
         <h1 className="text-3xl font-bold text-gray-900">
           Camp Outbreak Investigation: Initial Scenario
         </h1>
         <p className="mt-2 text-gray-600">
-          Summer 2025: A respiratory illness outbreak at Camp Pinewood
+          Summer 2025: An unknown rash/fever illness outbreak at Camp Pinewood
         </p>
       </header>
 
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
-        {/* Column 1: Camp Context and Population Details */}
-        <div className="bg-white rounded-lg shadow p-6">
-          <h2 className="text-xl font-semibold mb-4">Camp Overview</h2>
-          <div className="space-y-6">
+      <div className="max-w-[95%] mx-auto grid grid-cols-4 gap-4 h-[calc(100vh-150px)]">
+        {/* Column 1: Camp Context */}
+        <div className="bg-white rounded-lg shadow p-4 overflow-y-auto">
+          <h2 className="text-lg font-semibold mb-3">Camp Overview</h2>
+          <div className="space-y-4 text-sm">
             <div>
-              <h3 className="font-medium text-gray-900 mb-2">Population Demographics</h3>
-              <div className="space-y-3">
-                <div>
-                  <h4 className="text-sm font-medium text-gray-700">Campers</h4>
-                  <ul className="mt-1 text-gray-600 text-sm list-disc pl-4">
-                    <li>Ages: 8-14 years old</li>
-                    <li>Gender: 60% female, 40% male</li>
-                    <li>Total: 150 campers</li>
-                    <li>Pre-existing conditions: Mild seasonal allergies (few cases)</li>
-                  </ul>
-                </div>
-                <div>
-                  <h4 className="text-sm font-medium text-gray-700">Staff</h4>
-                  <ul className="mt-1 text-gray-600 text-sm list-disc pl-4">
-                    <li>Ages: 18-25 years old</li>
-                    <li>Gender: 50% female, 50% male</li>
-                    <li>Total: 50 staff members</li>
-                    <li>Notable conditions: One counselor with Crohn's disease, one pregnant</li>
-                  </ul>
-                </div>
-              </div>
+              <h3 className="font-medium text-gray-900">Demographics</h3>
+              <ul className="mt-2 space-y-1 text-gray-600">
+                <li>• Campers: 150 (Ages 8-14)</li>
+                <li>• Staff: 50 (Ages 18-25)</li>
+                <li>• Gender: ~50/50 split</li>
+                <li>• Pre-existing conditions:</li>
+                <li className="ml-4">- Several mild allergies</li>
+                <li className="ml-4">- One counselor with Crohn's</li>
+                <li className="ml-4">- One pregnant counselor</li>
+              </ul>
             </div>
             <div>
-              <h3 className="font-medium text-gray-900 mb-2">Facility Information</h3>
-              <ul className="text-gray-600 text-sm list-disc pl-4">
-                <li>Remote location with limited medical facilities</li>
-                <li>Small infirmary with basic supplies</li>
-                <li>Water from local well (treated, occasional discoloration)</li>
-                <li>Communal dining hall</li>
-                <li>Shared cabin accommodations</li>
+              <h3 className="font-medium text-gray-900">Location & Facilities</h3>
+              <ul className="mt-2 space-y-1 text-gray-600">
+                <li>• Remote camp setting</li>
+                <li>• Basic medical facilities</li>
+                <li>• Well water supply</li>
+                <li>• Communal dining hall</li>
+                <li>• Shared cabin accommodations</li>
+                <li>• Limited access to hospitals</li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="font-medium text-gray-900">Recent Activities</h3>
+              <ul className="mt-2 space-y-1 text-gray-600">
+                <li>• Arrival day orientation</li>
+                <li>• Group dining (all meals)</li>
+                <li>• Swimming activities</li>
+                <li>• Staff town visits permitted</li>
               </ul>
             </div>
           </div>
         </div>
 
-        {/* Column 2: Initial Reports and Clinical Presentation */}
-        <div className="bg-white rounded-lg shadow p-6">
-          <h2 className="text-xl font-semibold mb-4">Initial Presentation</h2>
-          <div className="space-y-6">
+        {/* Column 2: Initial Reports */}
+        <div className="bg-white rounded-lg shadow p-4 overflow-y-auto">
+          <h2 className="text-lg font-semibold mb-3">Initial Presentation</h2>
+          <div className="space-y-4 text-sm">
             <div>
-              <h3 className="font-medium text-gray-900 mb-2">Timeline</h3>
-              <ul className="text-gray-600 text-sm list-disc pl-4">
-                <li>First cases: 24 hours post-arrival</li>
-                <li>Rapid spread within 48 hours</li>
-                <li>Primarily affecting counselors initially</li>
-                <li>New cases still emerging</li>
+              <h3 className="font-medium text-gray-900">Timeline</h3>
+              <ul className="mt-2 space-y-1 text-gray-600">
+                <li>• First cases: 24h post-arrival</li>
+                <li>• Rapid spread within 48h</li>
+                <li>• Primarily affecting counselors</li>
+                <li>• New cases still emerging</li>
+                <li>• Pattern suggests person-to-person</li>
               </ul>
             </div>
             <div>
-              <h3 className="font-medium text-gray-900 mb-2">Clinical Symptoms</h3>
-              <ul className="text-gray-600 text-sm list-disc pl-4">
-                <li>Spreading rash (varying appearance)</li>
-                <li>Fever and chills</li>
-                <li>Severe sore throat</li>
-                <li>Muscle aches</li>
-                <li>Lymph node swelling</li>
+              <h3 className="font-medium text-gray-900">Key Symptoms</h3>
+              <ul className="mt-2 space-y-1 text-gray-600">
+                <li>• Fever (101-103°F)</li>
+                <li>• Severe sore throat</li>
+                <li>• Spreading rash</li>
+                <li>• Lymph node swelling</li>
+                <li>• Muscle aches</li>
+                <li>• Headache</li>
               </ul>
             </div>
             <div>
-              <h3 className="font-medium text-gray-900 mb-2">Recent Activities</h3>
-              <ul className="text-gray-600 text-sm list-disc pl-4">
-                <li>Common meals in dining hall</li>
-                <li>Shared water sources</li>
-                <li>Group activities</li>
-                <li>Some counselors visited local diner</li>
+              <h3 className="font-medium text-gray-900">Initial Concerns</h3>
+              <ul className="mt-2 space-y-1 text-gray-600">
+                <li>• Rate of spread</li>
+                <li>• Severity of symptoms</li>
+                <li>• Limited medical resources</li>
+                <li>• Vulnerable populations</li>
+                <li>• Need for isolation measures</li>
               </ul>
             </div>
           </div>
         </div>
 
-        {/* Column 3: Differential Diagnosis Section */}
-        <div className="bg-white rounded-lg shadow p-6">
-          <h2 className="text-xl font-semibold mb-4">Suspected Pathogens</h2>
-          <div className="space-y-6">
-            <div>
-              <p className="text-sm text-gray-600 mb-4">
-                Select a pathogen to review its characteristics and compare with current outbreak:
-              </p>
-              <div className="space-y-2 mb-6">
-                {(['staphylococcus', 'streptococcus', 'shigella'] as PathogenType[]).map((pathogen) => (
-                  <button
-                    key={pathogen}
-                    onClick={() => setSelectedPathogen(pathogen)}
-                    className={`w-full px-4 py-2 rounded-lg ${
-                      selectedPathogen === pathogen
-                        ? 'bg-blue-500 text-white'
-                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                    }`}
-                  >
-                    {pathogen.charAt(0).toUpperCase() + pathogen.slice(1)}
-                  </button>
-                ))}
-              </div>
-            </div>
-            <PathogenDisplay pathogenType={selectedPathogen} />
+        {/* Column 3: Pathogen Information */}
+        <div className="bg-white rounded-lg shadow p-4 overflow-y-auto">
+          <h2 className="text-lg font-semibold mb-3">Suspected Pathogens</h2>
+          <div className="space-y-2 mb-4">
+            {(['staphylococcus', 'streptococcus', 'shigella'] as PathogenType[]).map((pathogen) => (
+              <button
+                key={pathogen}
+                onClick={() => setSelectedPathogen(pathogen)}
+                className={`w-full px-3 py-2 rounded-lg text-sm ${
+                  selectedPathogen === pathogen
+                    ? 'bg-blue-500 text-white'
+                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                }`}
+              >
+                {pathogen.charAt(0).toUpperCase() + pathogen.slice(1)}
+              </button>
+            ))}
           </div>
+          <PathogenDisplay pathogenType={selectedPathogen} />
         </div>
-      </div>
 
-      <div className="max-w-7xl mx-auto mt-8">
-        <div className="bg-white rounded-lg shadow p-6">
-          <h2 className="text-xl font-semibold mb-4">Investigation Objectives</h2>
-          <ul className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <li className="text-gray-600">
-              <span className="font-medium text-gray-900">Identify Pathogen:</span>
-              <br />Determine the causative agent through clinical presentation and laboratory testing
-            </li>
-            <li className="text-gray-600">
-              <span className="font-medium text-gray-900">Control Spread:</span>
-              <br />Implement appropriate isolation and prevention measures
-            </li>
-            <li className="text-gray-600">
-              <span className="font-medium text-gray-900">Treat Cases:</span>
-              <br />Provide appropriate medical intervention based on identification
-            </li>
-          </ul>
+        {/* Column 4: Environmental Data */}
+        <div className="bg-white rounded-lg shadow p-4 overflow-y-auto">
+          <h2 className="text-lg font-semibold mb-3">Environmental Testing</h2>
+          <EnvironmentalDisplay />
         </div>
       </div>
     </div>
@@ -148,11 +130,11 @@ function App() {
 
   return (
     <>
-     <button
-      onClick={() => setShowDashboard(!showDashboard)}
-      className="fixed bottom-4 right-4 px-4 py-2 bg-gray-800 text-white rounded-lg z-10 hover:bg-gray-700"
+      <button
+        onClick={() => setShowDashboard(!showDashboard)}
+        className="fixed bottom-4 right-4 px-4 py-2 bg-gray-800 text-white rounded-lg z-10 hover:bg-gray-700"
       >
-      Switch to {showDashboard ? 'Case Summary' : 'Investigation Dashboard'}
+        Switch to {showDashboard ? 'Case Summary' : 'Investigation Dashboard'}
       </button>
 
       {showDashboard ? <MainDashboard /> : originalView}
