@@ -20,7 +20,7 @@ function App() {
         </p>
       </header>
 
-      <div className="max-w-[95%] mx-auto grid grid-cols-4 gap-4 h-[calc(100vh-150px)]">
+      <div className="max-w-[95%] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 min-h-screen">
         {/* Column 1: Camp Context */}
         <div className="bg-white rounded-lg shadow p-4 overflow-y-auto">
           <h2 className="text-lg font-semibold mb-3">Camp Overview</h2>
