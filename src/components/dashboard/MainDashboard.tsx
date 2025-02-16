@@ -62,54 +62,49 @@ export function MainDashboard() {
       </header>
 
       <main className="max-w-[95%] mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 min-h-screen">
-          {/* Column 1: Pathogen Reference */}
-          <div className="bg-white rounded-lg shadow p-4 overflow-y-auto">
-            <h2 className="text-lg font-semibold mb-3">Pathogen Reference</h2>
-            <PathogenDisplay pathogenType={selectedPathogen} />
-          </div>
+  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 min-h-screen">
+    {/* Column 1: Pathogen Reference */}
+    <div className="bg-white rounded-lg shadow p-4">  {/* removed overflow-y-auto */}
+      <h2 className="text-lg font-semibold mb-3">Pathogen Reference</h2>
+      <PathogenDisplay pathogenType={selectedPathogen} />
+    </div>
 
-          {/* Column 2: Symptom Progression */}
-          <div className="bg-white rounded-lg shadow p-4 overflow-y-auto">
-            <h2 className="text-lg font-semibold mb-3">Symptom Progression</h2>
-            <OutbreakProgression />
-          </div>
+    {/* Column 2: Symptom Progression */}
+    <div className="bg-white rounded-lg shadow p-4">
+      <h2 className="text-lg font-semibold mb-3">Symptom Progression</h2>
+      <OutbreakProgression />
+    </div>
 
-          {/* Column 3: Testing Data */}
-          <div className="bg-white rounded-lg shadow p-4 overflow-y-auto">
-            <h2 className="text-lg font-semibold mb-3">Testing Results</h2>
-            <TestingData pathogenType={selectedPathogen} />
-          </div>
+    {/* Column 3: Testing Data */}
+    <div className="bg-white rounded-lg shadow p-4">
+      <h2 className="text-lg font-semibold mb-3">Testing Results</h2>
+      <TestingData pathogenType={selectedPathogen} />
+    </div>
 
-          {/* Column 4: Investigation Flow/Questions */}
-          <div className="bg-white rounded-lg shadow p-4 overflow-y-auto">
-            <h2 className="text-lg font-semibold mb-3">Investigation Progress</h2>
-            
-            {/* Investigation Flow Component */}
-            <InvestigationFlow currentPhase={investigationPhase} />
+    {/* Column 4: Investigation Flow/Questions */}
+    <div className="bg-white rounded-lg shadow p-4">
+      <h2 className="text-lg font-semibold mb-3">Investigation Progress</h2>
+      <InvestigationFlow currentPhase={investigationPhase} />
 
-            {/* Phase-specific Content */}
-            <div className="mt-4 bg-gray-50 rounded p-3">
-              <h3 className="font-semibold text-sm mb-2">
-                {investigationPhase === 'initial' && 'Initial Assessment Phase'}
-                {investigationPhase === 'testing' && 'Laboratory Testing Phase'}
-                {investigationPhase === 'confirmation' && 'Confirmation Phase'}
-              </h3>
-              <p className="text-sm text-gray-600">
-                {investigationPhase === 'initial' && 
-                  'Analyzing initial symptom patterns and distribution among camp population.'}
-                {investigationPhase === 'testing' && 
-                  'Conducting targeted testing based on symptom patterns to identify causative agent.'}
-                {investigationPhase === 'confirmation' && 
-                  'Reviewing all evidence to confirm Streptococcal infection as the outbreak cause.'}
-              </p>
-            </div>
-
-            {/* Phase-specific Visualizations */}
-          
-          </div>
-        </div>
-      </main>
+      {/* Phase-specific Content */}
+      <div className="mt-4 bg-gray-50 rounded p-3">
+        <h3 className="font-semibold text-sm mb-2">
+          {investigationPhase === 'initial' && 'Initial Assessment Phase'}
+          {investigationPhase === 'testing' && 'Laboratory Testing Phase'}
+          {investigationPhase === 'confirmation' && 'Confirmation Phase'}
+        </h3>
+        <p className="text-sm text-gray-600">
+          {investigationPhase === 'initial' && 
+            'Analyzing initial symptom patterns and distribution among camp population.'}
+          {investigationPhase === 'testing' && 
+            'Conducting targeted testing based on symptom patterns to identify causative agent.'}
+          {investigationPhase === 'confirmation' && 
+            'Reviewing all evidence to confirm Streptococcal infection as the outbreak cause.'}
+        </p>
+      </div>
+    </div>
+  </div>
+</main>
     </div>
   );
 }
