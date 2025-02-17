@@ -1,5 +1,4 @@
-// src/App.tsx
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { PathogenDisplay } from './components/pathogen/PathogenDisplay';
 import { MainDashboard } from './components/dashboard/MainDashboard';
 import { PathogenType } from './types';
@@ -8,6 +7,15 @@ import { EnvironmentalDisplay } from './components/visualization/EnvironmentalDi
 function App() {
   const [selectedPathogen, setSelectedPathogen] = useState<PathogenType>('staphylococcus');
   const [showDashboard, setShowDashboard] = useState(false);
+  const [showGreeting, setShowGreeting] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowGreeting(false);
+    }, 10000); // Hide after 10 seconds
+
+    return () => clearTimeout(timer);
+  }, []);
 
   const originalView = (
     <div className="min-h-screen bg-gray-100 p-4">
@@ -130,6 +138,37 @@ function App() {
 
   return (
     <>
+      {showGreeting && (
+        <div
+          className="fixed top-0 left-0 w-full h-full flex items-center justify-center z-50"
+          style={{
+            background: "url('/images/modalbackground.jpg')",
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
+        >
+          <div className="bg-white bg-opacity-90 p-8 rounded-lg shadow-lg text-center flex items-center gap-4">
+            <img
+              src="/images/WCCClogo.jpg"
+              alt="College Logo"
+              className="w-40 h-40 object-contain"
+            />
+            <div>
+              <h2 className="text-2xl font-bold mb-4 text-gray-900">Welcome!</h2>
+              <p className="text-gray-800">
+                This application for camp case study was designed by Colby Stoker specifically for the Washington County Community College Microbiology course.
+              </p>
+              <button
+                onClick={() => setShowGreeting(false)}
+                className="mt-6 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+              >
+                Begin Investigation
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       <button
         onClick={() => setShowDashboard(!showDashboard)}
         className="fixed bottom-4 right-4 px-4 py-2 bg-gray-800 text-white rounded-lg z-10 hover:bg-gray-700"
