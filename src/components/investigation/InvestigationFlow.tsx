@@ -1,4 +1,3 @@
-// src/components/investigation/InvestigationFlow.tsx
 import React from 'react';
 import { investigationTimeline } from '../../data/investigationFlow';
 
@@ -7,7 +6,9 @@ interface InvestigationFlowProps {
 }
 
 export function InvestigationFlow({ currentPhase }: InvestigationFlowProps) {
-  const currentPhaseData = investigationTimeline.find(phase => phase.phase === currentPhase);
+  const currentPhaseData = investigationTimeline.find(
+    phase => phase.phase === currentPhase
+  );
 
   if (!currentPhaseData) return null;
 
@@ -15,7 +16,8 @@ export function InvestigationFlow({ currentPhase }: InvestigationFlowProps) {
     <div className="bg-white rounded-lg shadow p-6">
       <div className="mb-6">
         <h2 className="text-xl font-semibold text-gray-900 mb-2">
-          Investigation Phase: {currentPhase.charAt(0).toUpperCase() + currentPhase.slice(1)}
+          Investigation Phase:{' '}
+          {currentPhase.charAt(0).toUpperCase() + currentPhase.slice(1)}
         </h2>
         <p className="text-sm text-gray-600">
           {currentPhaseData.day} ({currentPhaseData.date})
@@ -26,13 +28,17 @@ export function InvestigationFlow({ currentPhase }: InvestigationFlowProps) {
         <h3 className="text-lg font-medium text-gray-900 mb-3">Key Findings</h3>
         <ul className="list-disc pl-5 space-y-2">
           {currentPhaseData.keyFindings.map((finding, index) => (
-            <li key={index} className="text-gray-700">{finding}</li>
+            <li key={index} className="text-gray-700">
+              {finding}
+            </li>
           ))}
         </ul>
       </div>
 
       <div>
-        <h3 className="text-lg font-medium text-gray-900 mb-3">Critical Questions</h3>
+        <h3 className="text-lg font-medium text-gray-900 mb-3">
+          Critical Questions
+        </h3>
         <div className="space-y-6">
           {currentPhaseData.criticalQuestions.map((q, index) => (
             <div key={index} className="p-4 bg-gray-50 rounded-lg">
@@ -41,17 +47,16 @@ export function InvestigationFlow({ currentPhase }: InvestigationFlowProps) {
                 {q.options.map((option, optIndex) => (
                   <button
                     key={optIndex}
-                    className="w-full text-left p-2 rounded border hover:bg-blue-50"
+                    className="w-full text-left p-2 rounded border hover:bg-blue-300 hover:text-white"
                     onClick={() => {
-                      // Show explanation when correct answer is clicked
-                      if (option === q.correctAnswer) {
+                      if (option.text === q.correctAnswer) {
                         alert(`Correct! ${q.explanation}`);
                       } else {
-                        alert('Try again!');
+                        alert(`Incorrect. ${option.explanation}`);
                       }
                     }}
                   >
-                    {option}
+                    {option.text}
                   </button>
                 ))}
               </div>

@@ -1,34 +1,40 @@
-import { InvestigationPhase } from '../types';
+import { InvestigationPhase, } from '../types';
+
+
 
 export const investigationTimeline: InvestigationPhase[] = [
     {
         phase: 'initial',
-        day: 'Day 0-1',
+        day: 'Day 0-1', 
         date: '2025-06-15',
         description: 'Initial case reports and symptom assessment',
         keyFindings: [
-            'Multiple counselors reporting fever and sore throat',
-            'No significant gastrointestinal symptoms',
-            'No skin infections noted',
+            'Multiple counselors reporting fever (101-103°F) and severe sore throat, but no cough',
+            'Absence of diarrhea, vomiting, or abdominal pain reported among the affected individuals',
+            'Physical examination reveals no signs of skin abscesses, cellulitis, or impetigo',
             'Pattern suggests respiratory transmission'
         ],
         criticalQuestions: [
             {
-                question: "Based on initial symptoms, which pathogen is least likely?",
-                options: ['Staphylococcus', 'Streptococcus', 'Shigella'],
-                correctAnswer: 'Shigella',
-                explanation: 'Absence of GI symptoms makes Shigella unlikely'
+                question: "Given the initial symptoms of fever and sore throat, which of the following pathogens is *least* likely to be the primary cause?",
+                options: [
+                    { text: 'Staphylococcus aureus', explanation: 'While S. aureus can cause skin infections, it\'s less common as a primary cause of fever and sore throat' },
+                    { text: 'Streptococcus pyogenes', explanation: 'S. pyogenes is a common cause of bacterial pharyngitis (strep throat), making it a more likely suspect' },
+                    { text: 'Shigella dysenteriae', explanation: 'Shigella typically causes gastrointestinal symptoms, which are not prominent in this outbreak' }
+                ],
+                correctAnswer: 'Shigella dysenteriae',
+                explanation: 'Shigella typically causes gastrointestinal symptoms, which are not prominent in this outbreak'
             },
             {
-                question: "What testing should be ordered first?",
+                question: "Considering the initial presentation, which diagnostic test would provide the *most rapid and relevant* information?",
                 options: [
-                    'Rapid strep test',
-                    'Stool culture',
-                    'Skin culture',
-                    'Blood culture'
+                    { text: 'Rapid antigen detection test for Streptococcus pyogenes', explanation: 'A rapid strep test is the quickest way to confirm strep throat' },
+                    { text: 'Stool culture for enteric pathogens', explanation: 'GI symptoms are not prominent in the initial presentation' },
+                    { text: 'Gram stain and culture of skin lesion', explanation: 'No skin lesions are reported in the initial findings' },
+                    { text: 'Complete blood count (CBC) with differential', explanation: 'A CBC is not specific enough for rapid identification of the causative agent' }
                 ],
-                correctAnswer: 'Rapid strep test',
-                explanation: 'Given the predominant symptoms of fever and sore throat, rapid strep testing is the most appropriate initial test'
+                correctAnswer: 'Rapid antigen detection test for Streptococcus pyogenes',
+                explanation: 'A rapid strep test is the quickest way to confirm strep throat'
             }
         ]
     },
@@ -38,33 +44,33 @@ export const investigationTimeline: InvestigationPhase[] = [
         date: '2025-06-16',
         description: 'Laboratory testing and continued monitoring',
         keyFindings: [
-            'Rapid strep tests positive in 80% of tested cases',
-            'Characteristic rash appearing in several cases',
-            'New cases primarily among close contacts',
+            'Rapid antigen detection tests for Streptococcus pyogenes are positive in 80% of tested individuals',
+            'A diffuse, erythematous, sandpaper-like rash is observed on the trunk and extremities of several patients',
+            'New cases are primarily occurring among individuals with close contact (e.g., cabinmates)',
             'Throat cultures pending'
         ],
         criticalQuestions: [
             {
-                question: "The appearance of rash after fever and sore throat is most consistent with:",
+                question: "The appearance of a diffuse, sandpaper-like rash 1-2 days after the onset of fever and sore throat is *most characteristic* of:",
                 options: [
-                    'Scarlet fever',
-                    'Staph scalded skin syndrome',
-                    'Viral exanthem',
-                    'Contact dermatitis'
+                    { text: 'Scarlet fever', explanation: 'Scarlet fever is characterized by a sandpaper-like rash following strep throat' },
+                    { text: 'Staphylococcal Scalded Skin Syndrome (SSSS)', explanation: 'SSSS presents with blistering and peeling of the skin, not a sandpaper-like rash' },
+                    { text: 'Measles (Rubeola)', explanation: 'Measles is associated with distinct prodromal symptoms and a maculopapular rash that starts on the face' },
+                    { text: 'Contact dermatitis', explanation: 'Contact dermatitis is localized and associated with itching, not fever and sore throat' }
                 ],
                 correctAnswer: 'Scarlet fever',
-                explanation: 'The progression of symptoms (fever/sore throat followed by rash) and positive strep tests suggests scarlet fever, a form of strep infection'
+                explanation: 'Scarlet fever is characterized by a sandpaper-like rash following strep throat'
             },
             {
-                question: "What intervention should be implemented immediately?",
+                question: "Based on the positive rapid strep tests and characteristic rash, what is the *most appropriate* immediate intervention?",
                 options: [
-                    'Begin appropriate antibiotics for positive cases',
-                    'Wait for throat culture results',
-                    'Isolate all campers',
-                    'Close the camp'
+                    { text: 'Initiate oral penicillin or amoxicillin treatment', explanation: 'Antibiotics are necessary to treat the bacterial infection' },
+                    { text: 'Administer topical corticosteroids for rash', explanation: 'Corticosteroids do not address the underlying bacterial infection' },
+                    { text: 'Isolate all campers and staff pending further investigation', explanation: 'While isolation is important, treatment should be initiated promptly in confirmed cases' },
+                    { text: 'Prescribe antiviral medication', explanation: 'The evidence points to a bacterial infection, not a viral one' }
                 ],
-                correctAnswer: 'Begin appropriate antibiotics for positive cases',
-                explanation: 'With positive rapid strep tests and consistent clinical presentation, antibiotic treatment should begin to prevent complications and reduce transmission'
+                correctAnswer: 'Initiate oral penicillin or amoxicillin treatment',
+                explanation: 'Antibiotics are necessary to treat the bacterial infection'
             }
         ]
     },
@@ -74,33 +80,33 @@ export const investigationTimeline: InvestigationPhase[] = [
         date: '2025-06-18',
         description: 'Treatment implementation and outcome monitoring',
         keyFindings: [
-            'Throat cultures confirm Group A Streptococcus',
-            'Patients on antibiotics showing improvement within 48 hours',
-            'No new cases among treated contacts',
+            'Throat cultures confirm the presence of Streptococcus pyogenes (Group A Streptococcus) in symptomatic individuals',
+            'Patients who received appropriate antibiotic treatment show significant clinical improvement within 48 hours',
+            'No new cases of pharyngitis have been reported among treated contacts after 72 hours',
             'Pattern consistent with streptococcal outbreak'
         ],
         criticalQuestions: [
             {
-                question: "How long should cases be isolated from camp activities?",
+                question: "According to current guidelines, how long should individuals with confirmed Streptococcus pyogenes pharyngitis be excluded from camp activities *after* starting appropriate antibiotic therapy?",
                 options: [
-                    '24 hours after starting antibiotics',
-                    '48 hours after starting antibiotics',
-                    'Until rash resolves',
-                    'Until fever resolves'
+                    { text: '24 hours', explanation: '24 hours is generally accepted after starting antibiotics' },
+                    { text: '48 hours', explanation: 'Some guidelines recommend 48 hours, but 24 hours is generally accepted' },
+                    { text: '72 hours', explanation: '72 hours is not typically required with appropriate antibiotic treatment' },
+                    { text: 'Until resolution of rash', explanation: 'The rash may persist even after the individual is no longer contagious' }
                 ],
-                correctAnswer: '24 hours after starting antibiotics',
-                explanation: 'Strep throat cases are generally no longer contagious 24 hours after starting appropriate antibiotic therapy'
+                correctAnswer: '24 hours',
+                explanation: '24 hours is generally accepted after starting antibiotics'
             },
             {
-                question: "What follow-up is most important for this outbreak?",
+                question: "What is the *most critical* long-term follow-up measure for this outbreak of Streptococcus pyogenes pharyngitis?",
                 options: [
-                    'Monitor for post-streptococcal complications',
-                    'Continue daily rapid strep testing',
-                    'Perform weekly throat cultures',
-                    'Monitor for antibiotic resistance'
+                    { text: 'Monitor for post-streptococcal complications', explanation: 'Important to watch for potential complications like rheumatic fever and glomerulonephritis' },
+                    { text: 'Continue daily rapid strep testing of all campers', explanation: 'Not necessary once the outbreak is controlled and treatment is in place' },
+                    { text: 'Perform weekly throat cultures on all staff', explanation: 'Not necessary unless new cases arise' },
+                    { text: 'Monitor for antibiotic resistance', explanation: 'While important in general, it\'s not the most critical follow-up measure in this specific outbreak scenario' }
                 ],
                 correctAnswer: 'Monitor for post-streptococcal complications',
-                explanation: 'Given the significant number of cases, monitoring for post-strep complications (like rheumatic fever) is important'
+                explanation: 'Important to watch for potential complications like rheumatic fever and glomerulonephritis'
             }
         ]
     }
