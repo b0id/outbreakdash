@@ -60,22 +60,21 @@ export function MainDashboard() {
       </header>
 
       <main className="max-w-[95%] mx-auto">
-        {/* Now using a two-column grid on medium/large screens */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 min-h-screen">
-          {/* Left Column: Visualizations */}
-          <div className="space-y-4">
-            <div className="bg-white rounded-lg shadow p-4">
-              <h2 className="text-lg font-semibold mb-3">Symptom Progression</h2>
-              <OutbreakProgression phase={investigationPhase} />
-            </div>
-
-            <div className="bg-white rounded-lg shadow p-4">
-              <h2 className="text-lg font-semibold mb-3">Testing Results</h2>
-              <TestingData pathogenType={selectedPathogen} />
-            </div>
+        {/* On mobile: one column; on large screens: 4 columns where flip card occupies 2 columns */}
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 min-h-screen">
+          {/* Primary Data (Flip Card with OutbreakProgression) */}
+          <div className="bg-white rounded-lg shadow p-4 lg:col-span-2">
+            <h2 className="text-lg font-semibold mb-3">Symptom & Population Data</h2>
+            <OutbreakProgression phase={investigationPhase} defaultView="back" />
           </div>
 
-          {/* Right Column: Investigation Flow / Exercises */}
+          {/* Testing Results Section */}
+          <div className="bg-white rounded-lg shadow p-4">
+            <h2 className="text-lg font-semibold mb-3">Testing Results</h2>
+            <TestingData pathogenType={selectedPathogen} />
+          </div>
+
+          {/* Investigation Flow / Exercises */}
           <div className="bg-white rounded-lg shadow p-4">
             <h2 className="text-lg font-semibold mb-3">Investigation Progress</h2>
             <InvestigationFlow currentPhase={investigationPhase} />
@@ -86,11 +85,11 @@ export function MainDashboard() {
                 {investigationPhase === 'confirmation' && 'Confirmation Phase'}
               </h3>
               <p className="text-sm text-gray-600">
-                {investigationPhase === 'initial' && 
+                {investigationPhase === 'initial' &&
                   'Analyzing initial symptom patterns and distribution among camp population.'}
-                {investigationPhase === 'testing' && 
+                {investigationPhase === 'testing' &&
                   'Conducting targeted testing based on symptom patterns to identify causative agent.'}
-                {investigationPhase === 'confirmation' && 
+                {investigationPhase === 'confirmation' &&
                   'Reviewing all evidence to confirm Streptococcal infection as the outbreak cause.'}
               </p>
             </div>

@@ -10,16 +10,15 @@ import {
   Tooltip,
   Legend,
   ResponsiveContainer,
-  ReferenceLine
+  ReferenceLine,
 } from 'recharts';
 
-interface OutbreakProgressionProps {
+export interface OutbreakProgressionProps {
   phase: 'initial' | 'testing' | 'confirmation';
+  defaultView?: 'front' | 'back';
 }
 
-const getMaxUnveiledDay = (
-  phase: 'initial' | 'testing' | 'confirmation'
-): number => {
+const getMaxUnveiledDay = (phase: 'initial' | 'testing' | 'confirmation'): number => {
   if (phase === 'initial') return 1;
   if (phase === 'testing') return 3;
   return 6;
@@ -259,13 +258,13 @@ const OutbreakTables: React.FC<OutbreakProgressionProps> = ({ phase }) => {
   );
 };
 
-export function OutbreakProgression({ phase }: OutbreakProgressionProps) {
+export function OutbreakProgression({ phase, defaultView = 'back' }: OutbreakProgressionProps) {
   return (
     <FlipCard
       title="Outbreak Progression"
       frontContent={<OutbreakCharts phase={phase} />}
       backContent={<OutbreakTables phase={phase} />}
-      defaultView="front"
+      defaultView={defaultView}
     />
   );
 }
