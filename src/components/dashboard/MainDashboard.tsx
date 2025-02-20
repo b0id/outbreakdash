@@ -71,9 +71,9 @@ export function MainDashboard() {
 
     {/* Column 2: Symptom Progression */}
     <div className="bg-white rounded-lg shadow p-4">
-      <h2 className="text-lg font-semibold mb-3">Symptom Progression</h2>
-      <OutbreakProgression />
-    </div>
+  <h2 className="text-lg font-semibold mb-3">Symptom Progression</h2>
+  <OutbreakProgression phase={investigationPhase} />
+</div>
 
     {/* Column 3: Testing Data */}
     <div className="bg-white rounded-lg shadow p-4">
