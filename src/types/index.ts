@@ -1,12 +1,16 @@
-// src/types/index.ts
-
 // This defines the basic structure of a pathogen's characteristics
 export interface PathogenCharacteristics {
     type: string;                // Example: "Gram-positive cocci"
     transmission: string;        // How the pathogen spreads
-    incubationPeriod: string;   // Time between exposure and symptoms
-    commonSymptoms: string[];   // Array of typical symptoms
+    incubationPeriod: string;    // Time between exposure and symptoms
+    commonSymptoms: string[];    // Array of typical symptoms
 }
+
+export interface AnswerOption {
+    text: string;
+    explanation: string;
+}
+
 export interface InvestigationPhase {
     phase: 'initial' | 'testing' | 'confirmation';
     day: string;
@@ -15,11 +19,12 @@ export interface InvestigationPhase {
     keyFindings: string[];
     criticalQuestions: {
         question: string;
-        options: string[];
+        options: AnswerOption[]; // Updated from string[] to AnswerOption[]
         correctAnswer: string;
         explanation: string;
     }[];
 }
+
 // Defines how we track cases over time
 export interface CaseData {
     day: string;        // The day of observation
