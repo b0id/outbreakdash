@@ -17,22 +17,7 @@ export function MainDashboard() {
           <h1 className="text-3xl font-bold text-gray-900">
             Camp Outbreak Investigation
           </h1>
-          <div className="flex gap-4">
-            <span className="text-sm text-gray-600 self-center">Reference Pathogen:</span>
-            {(['staphylococcus', 'streptococcus', 'shigella'] as PathogenType[]).map((pathogen) => (
-              <button
-                key={pathogen}
-                onClick={() => setSelectedPathogen(pathogen)}
-                className={`px-4 py-2 rounded-lg ${
-                  selectedPathogen === pathogen
-                    ? 'bg-blue-500 text-white'
-                    : 'bg-white text-gray-700 hover:bg-gray-50'
-                }`}
-              >
-                {pathogen.charAt(0).toUpperCase() + pathogen.slice(1)}
-              </button>
-            ))}
-          </div>
+          
         </div>
 
         <div className="mt-4 bg-white rounded-lg p-4 shadow">

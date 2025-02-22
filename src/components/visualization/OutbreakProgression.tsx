@@ -153,16 +153,16 @@ const OutbreakTables: React.FC<OutbreakProgressionProps> = ({ phase }) => {
         <table className="min-w-full border-collapse">
           <thead>
             <tr>
-              <th className="border p-2 text-black">Day</th>
-              <th className="border p-2 text-black">Date</th>
-              <th className="border p-2 text-black">Total Cases</th>
-              <th className="border p-2 text-black">Fever</th>
-              <th className="border p-2 text-black">Sore Throat</th>
-              <th className="border p-2 text-black">Rash</th>
-              <th className="border p-2 text-black">Lymphadenopathy</th>
-              <th className="border p-2 text-black">GI Symptoms</th>
-              <th className="border p-2 text-black">Counselors</th>
-              <th className="border p-2 text-black">Campers</th>
+              <th className="border p-1 text-black text-sm whitespace-nowrap">Day</th>
+              <th className="border p-1 text-black text-sm whitespace-nowrap">Date</th>
+              <th className="border p-1 text-black text-sm whitespace-nowrap">Total Cases</th>
+              <th className="border p-1 text-black text-sm whitespace-nowrap">Fever</th>
+              <th className="border p-1 text-black text-sm whitespace-nowrap">Sore Throat</th>
+              <th className="border p-1 text-black text-sm whitespace-nowrap">Rash</th>
+              <th className="border p-1 text-black text-sm whitespace-nowrap">Lymphadenopathy</th>
+              <th className="border p-1 text-black text-sm whitespace-nowrap">GI Symptoms</th>
+              <th className="border p-1 text-black text-sm whitespace-nowrap">Counselors</th>
+              <th className="border p-1 text-black text-sm whitespace-nowrap">Campers</th>
             </tr>
           </thead>
           <tbody>
@@ -171,24 +171,24 @@ const OutbreakTables: React.FC<OutbreakProgressionProps> = ({ phase }) => {
               const isUnveiled = dayNumber <= maxUnveiledDay;
               return (
                 <tr key={index} style={{ opacity: isUnveiled ? 1 : 0.3 }}>
-                  <td className="border p-2 text-black">{item.day}</td>
-                  <td className="border p-2 text-black">{item.date}</td>
-                  <td className="border p-2 text-black">{item.totalCases}</td>
-                  <td className="border p-2 text-black">{item.symptoms.fever}</td>
-                  <td className="border p-2 text-black">
+                  <td className="border p-1 text-black text-sm whitespace-nowrap">{item.day}</td>
+                  <td className="border p-1 text-black text-sm whitespace-nowrap">{item.date}</td>
+                  <td className="border p-1 text-black text-sm whitespace-nowrap">{item.totalCases}</td>
+                  <td className="border p-1 text-black text-sm whitespace-nowrap">{item.symptoms.fever}</td>
+                  <td className="border p-1 text-black text-sm whitespace-nowrap">
                     {item.symptoms.soreThroat}
                   </td>
-                  <td className="border p-2 text-black">{item.symptoms.rash}</td>
-                  <td className="border p-2 text-black">
+                  <td className="border p-1 text-black text-sm whitespace-nowrap">{item.symptoms.rash}</td>
+                  <td className="border p-1 text-black text-sm whitespace-nowrap">
                     {item.symptoms.lymphadenopathy}
                   </td>
-                  <td className="border p-2 text-black">
+                  <td className="border p-1 text-black text-sm whitespace-nowrap">
                     {item.symptoms.giSymptoms}
                   </td>
-                  <td className="border p-2 text-black">
+                  <td className="border p-1 text-black text-sm whitespace-nowrap">
                     {item.population.counselors}
                   </td>
-                  <td className="border p-2 text-black">
+                  <td className="border p-1 text-black text-sm whitespace-nowrap">
                     {item.population.campers}
                   </td>
                 </tr>
@@ -206,22 +206,22 @@ const OutbreakTables: React.FC<OutbreakProgressionProps> = ({ phase }) => {
         <table className="min-w-full border-collapse">
           <thead>
             <tr>
-              <th className="border p-2 text-black">Day</th>
-              <th className="border p-2 text-black">Date</th>
-              <th className="border p-2 text-black">Rapid Strep</th>
-              <th className="border p-2 text-black">
+              <th className="border p-1 text-black text-sm whitespace-nowrap">Day</th>
+              <th className="border p-1 text-black text-sm whitespace-nowrap">Date</th>
+              <th className="border p-1 text-black text-sm whitespace-nowrap">Rapid Strep</th>
+              <th className="border p-1 text-black text-sm whitespace-nowrap">
                 Rapid Strep Positive
               </th>
-              <th className="border p-2 text-black">Throat Culture</th>
-              <th className="border p-2 text-black">
+              <th className="border p-1 text-black text-sm whitespace-nowrap">Throat Culture</th>
+              <th className="border p-1 text-black text-sm whitespace-nowrap">
                 Throat Culture Positive
               </th>
-              <th className="border p-2 text-black">Staph Culture</th>
-              <th className="border p-2 text-black">
+              <th className="border p-1 text-black text-sm whitespace-nowrap">Staph Culture</th>
+              <th className="border p-1 text-black text-sm whitespace-nowrap">
                 Staph Culture Positive
               </th>
-              <th className="border p-2 text-black">Shigella Test</th>
-              <th className="border p-2 text-black">Shigella Positive</th>
+              <th className="border p-1 text-black text-sm whitespace-nowrap">Shigella Test</th>
+              <th className="border p-1 text-black text-sm whitespace-nowrap">Shigella Positive</th>
             </tr>
           </thead>
           <tbody>
@@ -230,22 +230,22 @@ const OutbreakTables: React.FC<OutbreakProgressionProps> = ({ phase }) => {
               const isUnveiled = dayNumber <= maxUnveiledDay;
               return (
                 <tr key={index} style={{ opacity: isUnveiled ? 1 : 0.3 }}>
-                  <td className="border p-2 text-black">{item.day}</td>
-                  <td className="border p-2 text-black">{item.date}</td>
-                  <td className="border p-2 text-black">{item.rapidStrep}</td>
-                  <td className="border p-2 text-black">
+                  <td className="border p-1 text-black text-sm whitespace-nowrap">{item.day}</td>
+                  <td className="border p-1 text-black text-sm whitespace-nowrap">{item.date}</td>
+                  <td className="border p-1 text-black text-sm whitespace-nowrap">{item.rapidStrep}</td>
+                  <td className="border p-1 text-black text-sm whitespace-nowrap">
                     {item.rapidStrepPositive}
                   </td>
-                  <td className="border p-2 text-black">{item.throatCulture}</td>
-                  <td className="border p-2 text-black">
+                  <td className="border p-1 text-black text-sm whitespace-nowrap">{item.throatCulture}</td>
+                  <td className="border p-1 text-black text-sm whitespace-nowrap">
                     {item.throatCulturePositive}
                   </td>
-                  <td className="border p-2 text-black">{item.staphCulture}</td>
-                  <td className="border p-2 text-black">
+                  <td className="border p-1 text-black text-sm whitespace-nowrap">{item.staphCulture}</td>
+                  <td className="border p-1 text-black text-sm whitespace-nowrap">
                     {item.staphCulturePositive}
                   </td>
-                  <td className="border p-2 text-black">{item.shigellaTest}</td>
-                  <td className="border p-2 text-black">
+                  <td className="border p-1 text-black text-sm whitespace-nowrap">{item.shigellaTest}</td>
+                  <td className="border p-1 text-black text-sm whitespace-nowrap">
                     {item.shigellaPositive}
                   </td>
                 </tr>
