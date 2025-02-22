@@ -5,6 +5,8 @@ import { PathogenType } from '../../types';
 import { OutbreakProgression } from '../visualization/OutbreakProgression';
 import { TestingData } from '../visualization/TestingData';
 import { InvestigationFlow } from '../investigation/InvestigationFlow';
+import { SurveyButton } from '../survey/SurveyButton';
+
 
 export function MainDashboard() {
   const [selectedPathogen, setSelectedPathogen] = useState<PathogenType>('staphylococcus');
@@ -81,6 +83,7 @@ export function MainDashboard() {
           </div>
         </div>
       </main>
+      <SurveyButton />
     </div>
   );
 }
