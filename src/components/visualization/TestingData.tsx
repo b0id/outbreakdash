@@ -1,6 +1,6 @@
 // src/components/visualization/TestingData.tsx
 import React from 'react';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, ReferenceLine } from 'recharts';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, ReferenceLine, Label, Text } from 'recharts';
 import { testingProgress } from '../../data/outbreakData';
 
 export function TestingData() {
@@ -8,29 +8,42 @@ export function TestingData() {
     <div className="space-y-4">
       {/* Strep Testing Results */}
       <div className="h-72">
-        <h3 className="text-lg font-semibold mb-2">Strep Testing Results</h3>
+        <h3 className="text-lg font-semibold mb-2 text-gray-900">Strep Testing Results</h3>
         <ResponsiveContainer width="100%" height="100%">
           <LineChart data={testingProgress}>
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="date" />
-            <YAxis />
+            <YAxis>
+              <Label angle={-90} value="Number of Cases" position="insideLeft" style={{ textAnchor: 'middle' }} />
+            </YAxis>
             <Tooltip />
             <Legend />
             <ReferenceLine x="06/19" stroke="red" label="Intervention Started" />
             <Line type="monotone" dataKey="rapidStrepPositive" name="Positive Rapid Strep" stroke="#8884d8" />
             <Line type="monotone" dataKey="throatCulturePositive" name="Positive Culture" stroke="#82ca9d" />
+             <Text
+                x={100}
+                y={20}
+                textAnchor="middle"
+                verticalAnchor="start"
+                style={{ fontSize: '16px', fontWeight: 'bold', fill: '#2D3748' }}
+              >
+                Epicurve
+              </Text>
           </LineChart>
         </ResponsiveContainer>
       </div>
 
       {/* Other Pathogen Testing */}
       <div className="h-72">
-        <h3 className="text-lg font-semibold mb-2">Differential Testing</h3>
+        <h3 className="text-lg font-semibold mb-2 text-gray-900">Differential Testing</h3>
         <ResponsiveContainer width="100%" height="100%">
           <LineChart data={testingProgress}>
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="date" />
-            <YAxis />
+            <YAxis>
+              <Label angle={-90} value="Number of Cases" position="insideLeft" style={{ textAnchor: 'middle' }} />
+            </YAxis>
             <Tooltip />
             <Legend />
             <ReferenceLine x="06/19" stroke="red" label="Intervention Started" />

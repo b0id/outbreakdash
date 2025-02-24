@@ -6,19 +6,21 @@ interface FlipCardProps {
   backContent: React.ReactNode;   // This will be our spreadsheet
   title?: string;
   defaultView?: 'front' | 'back';
+  titleClassName?: string;
 }
 
 export function FlipCard({ 
   frontContent, 
   backContent, 
   title, 
-  defaultView = 'back' // Setting default to show spreadsheet first
+  defaultView = 'back', // Setting default to show spreadsheet first
+  titleClassName = '',
 }: FlipCardProps) {
   const [isFlipped, setIsFlipped] = useState(defaultView === 'back');
 
   return (
     <div className="bg-white rounded-lg shadow p-6">
-      {title && <h2 className="text-xl font-semibold mb-4">{title}</h2>}
+      {title && <h2 className="text-xl font-semibold mb-4 text-gray-900">{title}</h2>}
       
       <div className="relative">
         <button

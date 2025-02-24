@@ -51,22 +51,22 @@ export function MainDashboard() {
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 min-h-screen">
           {/* Primary Data (Flip Card with OutbreakProgression) */}
           <div className="bg-white rounded-lg shadow p-4 lg:col-span-2">
-            <h2 className="text-lg font-semibold mb-3">Symptom & Population Data</h2>
+            <h2 className="text-lg font-semibold mb-3 text-gray-900">Symptom & Population Data</h2>
             <OutbreakProgression phase={investigationPhase} defaultView="back" />
           </div>
 
           {/* Testing Results Section */}
           <div className="bg-white rounded-lg shadow p-4">
-            <h2 className="text-lg font-semibold mb-3">Testing Results</h2>
+            <h2 className="text-lg font-bold mb-2 text-black !important">Epicurves</h2>
             <TestingData pathogenType={selectedPathogen} />
           </div>
 
           {/* Investigation Flow / Exercises */}
           <div className="bg-white rounded-lg shadow p-4">
-            <h2 className="text-lg font-semibold mb-3">Investigation Progress</h2>
+            <h2 className="text-lg font-semibold mb-3 text-gray-900">Investigation Progress</h2>
             <InvestigationFlow currentPhase={investigationPhase} />
             <div className="mt-4 bg-gray-50 rounded p-3">
-              <h3 className="font-semibold text-sm mb-2">
+              <h3 className="font-semibold text-sm mb-2 text-gray-900">
                 {investigationPhase === 'initial' && 'Initial Assessment Phase'}
                 {investigationPhase === 'testing' && 'Laboratory Testing Phase'}
                 {investigationPhase === 'confirmation' && 'Confirmation Phase'}

@@ -265,6 +265,7 @@ export function OutbreakProgression({ phase, defaultView = 'back' }: OutbreakPro
       frontContent={<OutbreakCharts phase={phase} />}
       backContent={<OutbreakTables phase={phase} />}
       defaultView={defaultView}
+      titleClassName="text-gray-900"
     />
   );
 }

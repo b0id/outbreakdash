@@ -31,7 +31,7 @@ function App() {
       <div className="max-w-[95%] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 min-h-screen">
         {/* Column 1: Camp Context */}
         <div className="bg-white rounded-lg shadow p-4 overflow-y-auto">
-          <h2 className="text-lg font-semibold mb-3">Camp Overview</h2>
+          <h2 className="text-lg font-semibold mb-3 text-black !important">Camp Overview</h2>
           <div className="space-y-4 text-sm">
             <div>
               <h3 className="font-medium text-gray-900">Demographics</h3>
@@ -70,7 +70,7 @@ function App() {
 
         {/* Column 2: Initial Reports */}
         <div className="bg-white rounded-lg shadow p-4 overflow-y-auto">
-          <h2 className="text-lg font-semibold mb-3">Initial Presentation</h2>
+          <h2 className="text-lg font-semibold mb-3 text-black !important">Initial Presentation</h2>
           <div className="space-y-4 text-sm">
             <div>
               <h3 className="font-medium text-gray-900">Timeline</h3>
@@ -108,7 +108,7 @@ function App() {
 
         {/* Column 3: Pathogen Information */}
         <div className="bg-white rounded-lg shadow p-4 overflow-y-auto">
-          <h2 className="text-lg font-semibold mb-3">Suspected Pathogens</h2>
+          <h2 className="text-lg font-semibold mb-3 text-black !important">Suspected Pathogens</h2>
           <div className="space-y-2 mb-4">
             {(['staphylococcus', 'streptococcus', 'shigella'] as PathogenType[]).map((pathogen) => (
               <button
@@ -129,7 +129,7 @@ function App() {
 
         {/* Column 4: Environmental Data */}
         <div className="bg-white rounded-lg shadow p-4 overflow-y-auto">
-          <h2 className="text-lg font-semibold mb-3">Environmental Testing</h2>
+          <h2 className="text-lg font-semibold mb-3 text-black !important">Environmental Testing</h2>
           <EnvironmentalDisplay />
         </div>
       </div>
